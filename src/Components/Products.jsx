@@ -10,7 +10,6 @@ function Products() {
     async function fetchdb() {
       const result = await fetchMealfromDb();
       setMeals(result);
-      console.log(result);
     }
     fetchdb();
   }, []);
@@ -18,7 +17,7 @@ function Products() {
   return (
     <ul id="meals">
       {meals.map((item) => (
-       <MealItem mealItem={item}/>
+       <MealItem key={item.id} mealItem={item}/>
       ))}
     </ul>
   );
