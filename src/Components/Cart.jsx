@@ -1,5 +1,7 @@
 function Cart() {
-    return (  );
+    return ( <Modal>
+        
+    </Modal> );
 }
 
 export default Cart;
