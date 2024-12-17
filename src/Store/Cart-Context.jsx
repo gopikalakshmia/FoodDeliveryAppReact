@@ -11,10 +11,21 @@ const [cart,setCart]=useState([]);
 const [length,setLength]=useState(0);
 const addItemToCart=(newItem)=>
     {
-        setCart((prevItem)=>([...prevItem,newItem]));
+        console.log(cart);
+        let findIndexCart=cart.findIndex(val=>val.item.id===newItem.id)
+        console.log(findIndexCart);
+        if(findIndexCart ===-1)
+        setCart((prevItem)=>([...prevItem,{item:newItem,Qty:1}]));
+    else{
+        let existigItem=cart[findIndexCart];
+        let cartItemtToUpdate={...existigItem,Qty:existigItem.Qty+1};
+        cart[findIndexCart]=cartItemtToUpdate;
+
+
+    }
         setLength((prevLength)=>(prevLength+1));
     }
-    console.log(cart);
+    //console.log(cart);
     const ValContext={
         items:cart,
         addToCart:addItemToCart,
