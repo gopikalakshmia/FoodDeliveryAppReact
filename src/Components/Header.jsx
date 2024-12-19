@@ -3,13 +3,15 @@ import Button from "./Button";
 import {CartContext} from "../Store/Cart-Context";
 import {useContext, useRef, useState} from 'react';
 import Modal from "./Modal";
+import Cart from "./Cart";
 
 function Header() {
 const {cartLength}=useContext(CartContext);
 const modal=useRef();
 const handleOpen=()=>{
-  modal.current.open();
+  setOpen(true);
 }
+const [open,setOpen]=useState(false);
   return (
     <header id="main-header">
       <div id="title">
@@ -17,7 +19,7 @@ const handleOpen=()=>{
         <h1>REACTFOOD</h1>
       </div>
       <Button textOnly onClick={handleOpen}>Cart ({cartLength})</Button>
-      <Modal ref={modal} />
+      {open&& <Cart open/>}
     </header>
   );
 }
