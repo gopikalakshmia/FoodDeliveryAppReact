@@ -7,9 +7,11 @@ import Cart from "./Cart";
 
 function Header() {
 const {cartLength}=useContext(CartContext);
-const modal=useRef();
 const handleOpen=()=>{
   setOpen(true);
+}
+const handleReopen=()=>{
+  setOpen(false);
 }
 const [open,setOpen]=useState(false);
   return (
@@ -19,7 +21,7 @@ const [open,setOpen]=useState(false);
         <h1>REACTFOOD</h1>
       </div>
       <Button textOnly onClick={handleOpen}>Cart ({cartLength})</Button>
-      {open&& <Cart open/>}
+      {open&& <Cart open handleReopen={handleReopen}/>}
     </header>
   );
 }
